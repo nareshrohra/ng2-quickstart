@@ -1,0 +1,23 @@
+<h1>Create a new post</h1>
+<form autocomplete="off" novalidate (ngSubmit)="doSave($event)">
+    <fieldset>
+        <div class="form-group">
+            <label for="titleInput">Title</label>
+            <input name="title" class="form-control" id="titleInput" placeholder="Title" [(ngModel)]="model.title" required #title="ngModel">
+            <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                Title is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bodyInput">Body</label>
+            <textarea  name="body" class="form-control" id="bodyInput" placeholder="Body" [(ngModel)]="model.body" required
+                #body="ngModel"></textarea>
+            <div [hidden]="body.valid || body.pristine" class="alert alert-danger">
+                Body is required
+            </div>
+        </div>
+    </fieldset>
+    <p>
+        <button class="btn btn-primary" type="submit" (ngClick)="doSave()">Save</button>
+    </p>
+</form>
